@@ -1,0 +1,197 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin-top: 100px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  background: #f0f0f0;
+
+  zoom: 0.75;
+}
+main {
+  background: url(assets/photos/cqphfou840opu2n8emtcbc8nei.png) no-repeat;
+  width: 320px;
+  height: 640px;
+  display: flex;
+  background-size: contain;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+}
+section {
+  gap: 24px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  padding: 16px 6px;
+  margin: 20px;
+}
+header {
+  display: flex;
+  justify-content: center;
+}
+header img {
+  width: 50px;
+}
+footer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+
+  & button {
+    background: url(assets/photos/1709669818150.jpg) no-repeat;
+    background-position: -44px -47px;
+    background-size: 300px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border-bottom: red;
+
+    cursor: pointer;
+    transition: scale 0.3s easy;
+    &:hover {
+      scale: 1.2;
+      background-position: -44px -104px;
+    }
+    &.isBig {
+      background-position: -50px -53px;
+      background-size: 400px;
+      height: 42px;
+      width: 42px;
+    }
+    &.isUndo {
+      background-position: -227px -47px;
+      &:hover {
+        background-position: -227px -104px;
+      }
+    }
+    &.isRemove {
+      background-position: -242px -63px;
+      &:hover {
+        background-position: -242px -139px;
+      }
+    }
+    &.isStar {
+      background-position: -135px -48px;
+      &:hover {
+        background-position: -135px -105px;
+      }
+    }
+    &.isFav {
+      background-position: -119px -65px;
+      &:hover {
+        background-position: -119px -141px;
+      }
+    }
+  }
+}
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  & > span{
+    display: grid;
+    align-content: center;
+    color: #777;
+    font-size: 14px;
+    height: 100%;
+    text-align: center;
+    z-index: -1;
+  }
+
+  & article {
+    cursor: grab;
+    box-shadow: 0 0 10px black;
+    border-radius: 8px;
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+
+    &.goLeft {
+      transform: rotate(-30deg) translateX(-150%) !important;
+    }
+    &.goRight {
+      transform: rotate(30deg) translateX(150%) !important;
+    }
+    &.goLeft,
+    &.goRight {
+      transition: transform 0.3s ease, rotate 0.3s ease;
+    }
+    &.reset {
+      transition: transform 0.3s ease;
+      transform: translateX(0) !important;
+    }
+     & .choice{
+        z-index: 9999;
+        color: black;
+        position: absolute;
+        padding: 4px 8px;
+        top: 32px;
+        right: 12px;
+        font-weight: bold;
+        font-size: 24px;
+        border: 4px solid;
+        border-radius: 8px;
+        opacity: 0;
+        &.nope{
+            /* background-color: rgb(209, 53, 53); */
+            border-color: #ff6e63;
+            color: #ff6e63;
+            transform: rotate(30deg);
+            right: 16px;
+            width: fit-content;
+        }
+        &.like{
+            /* background-color: rgb(43, 180, 112); */
+            border-color: #63ff68;
+            color: #63ff68;
+            transform: rotate(-30deg);
+            left: 16px;
+            width: fit-content;
+        }
+    } 
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    & h2 {
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      z-index: 3;
+      background: linear-gradient(0deg, #00000088 20%, transparent 40%);
+    }
+    & span {
+      margin-left: 4px;
+      line-height: 1.4;
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+}
